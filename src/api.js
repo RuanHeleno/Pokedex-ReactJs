@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = import.meta.env.VITE_API_URL;
+const url = "https://pokeapi.co/api/v2/pokemon";
 
 export const searchPokemon = async (pokemon) => {
   const res = await axios
