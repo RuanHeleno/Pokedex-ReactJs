@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { BsFillHeartFill } from "react-icons/bs";
 
 export const Image = styled.img`
-    width: 20%;
-    height: 100%;
+    max-width: 20%;
+    height: 80%;
     margin-right: 1rem;
+    aspect-ratio: 1;
 `
 
 export const CardBody = styled.div`
@@ -24,10 +25,16 @@ export const CardBodyTop = styled.div`
 
 export const Title = styled.h3`
     text-transform: capitalize;
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 2px;
 `;
 
 export const Id = styled.p`
-    font-weight: 100;
+    color: white;
+    font-weight: 300;
 `;
 
 export const CardBodyBottom = styled.div`
@@ -43,9 +50,19 @@ export const Types = styled.div`
 
 export const Type = styled.p`
     text-transform: capitalize;
-    border: 1px solid black;
+    border: 1px solid transparent;
+    background-color: rgba(0, 0, 0, .4);
     border-radius: 3rem;
     padding: .5rem 1rem;
+    transition: all 400ms ease-in-out;
+    cursor: default;
+    color: white;
+    font-weight: 500;
+    
+    &:hover {
+        background-color: transparent;
+        border-color: white;
+    }
 `;
 
 export const Button = styled.button`
@@ -55,10 +72,10 @@ export const Button = styled.button`
 `;
 
 export const Heart = styled(BsFillHeartFill)`
-    color: darkred;
+    color: red;
     transition: all 400ms ease-in-out;
 
     &:hover {
-        color: red;
+        color: darkred;
     }
 `

@@ -13,6 +13,24 @@ import {
   Heart,
 } from "./styles";
 
+import bgGrass from "../../assets/bgGrass.jpg";
+import bgWater from "../../assets/bgWater.jpg";
+import bgBug from "../../assets/bgBug.jpg";
+import bgFire from "../../assets/bgFire.jpg";
+import bgNormal from "../../assets/bgNormal.jpg";
+import bgPoison from "../../assets/bgPoison.jpg";
+import bgElectric from "../../assets/bgElectric.jpg";
+import bgGround from "../../assets/bgGround.jpg";
+import bgFairy from "../../assets/bgFairy.jpg";
+import bgFighting from "../../assets/bgFighting.jpg";
+import bgRock from "../../assets/bgRock.jpg";
+import bgPsychic from "../../assets/bgPsychic.jpg";
+import bgGhost from "../../assets/bgGhost.png";
+import bgIce from "../../assets/bgIce.jpg";
+import bgDragon from "../../assets/bgDragon.jpg";
+import bgDark from "../../assets/bgDark.jpg";
+import bgSteel from "../../assets/bgSteel.jpg";
+
 const Pokemon = (props) => {
   const { pokemon } = props;
   const type = pokemon.types[0].type.name;
@@ -24,42 +42,42 @@ const Pokemon = (props) => {
     console.log("aqui");
   };
 
-  const getBgCardColor = () => {
+  const getBgCard = () => {
     switch (type) {
       case "grass":
-        return "green";
+        return bgGrass;
       case "water":
-        return "blue";
+        return bgWater;
       case "fire":
-        return "orangered";
+        return bgFire;
       case "bug":
-        return "lightgreen";
+        return bgBug;
       case "normal":
-        return "lightgray";
+        return bgNormal;
       case "electric":
-        return "yellow";
+        return bgElectric;
       case "ground":
-        return "lightyellow";
+        return bgGround;
       case "fairy":
-        return "lightpink";
+        return bgFairy;
       case "poison":
-        return "#90d773";
+        return bgPoison;
       case "fighting":
-        return "maroon";
+        return bgFighting;
       case "rock":
-        return "brown";
+        return bgRock;
       case "psychic":
-        return "purple";
+        return bgPsychic;
       case "ghost":
-        return "gray";
+        return bgGhost;
       case "ice":
-        return "slateblue";
+        return bgIce;
       case "dragon":
-        return "gold";
+        return bgDragon;
       case "dark":
-        return "#2f2f2f";
+        return bgDark;
       case "steel":
-        return "darkgray";
+        return bgSteel;
       default:
         break;
     }
@@ -67,9 +85,11 @@ const Pokemon = (props) => {
 
   const Card = styled.article`
     display: flex;
+    align-items: center;
     box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
     border-radius: 5px;
-    background-color: ${getBgCardColor};
+    background: url(${getBgCard}) no-repeat center center;
+    background-size: cover;
     padding: 1rem;
   `;
 

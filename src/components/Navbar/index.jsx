@@ -1,4 +1,4 @@
-import { Container, Logo } from "./styles";
+import { Container, Favorites, Heart, LeftSide, Logo } from "./styles";
 
 const Navbar = () => {
   const logo =
@@ -6,7 +6,14 @@ const Navbar = () => {
 
   return (
     <Container>
-      <Logo src={logo} alt="PokeApi" />
+      <LeftSide>
+        <Logo src={logo} alt="PokeApi" />
+
+        <Favorites>
+          <Heart size={25} />
+          <p>Favoritos</p>
+        </Favorites>
+      </LeftSide>
     </Container>
   );
 };
