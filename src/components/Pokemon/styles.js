@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { BsFillHeartFill } from "react-icons/bs";
-
 export const Image = styled.img`
     max-width: 20%;
     height: 80%;
@@ -70,12 +68,3 @@ export const Button = styled.button`
     border: none;
     cursor: pointer;
 `;
-
-export const Heart = styled(BsFillHeartFill)`
-    color: red;
-    transition: all 400ms ease-in-out;
-
-    &:hover {
-        color: darkred;
-    }
-`

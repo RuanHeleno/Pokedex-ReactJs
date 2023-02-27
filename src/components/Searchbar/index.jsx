@@ -1,26 +1,24 @@
 import { useState } from "react";
 
-import { searchPokemon } from "../../api";
-
 import { Button, Container, Input } from "./styles";
 
 const Searchbar = (props) => {
-  const { setPokemons } = props;
+  const { onSearchHandler } = props;
   const [searched, setSearched] = useState("");
 
-  const onSearchHandler = async (pokemon) => {
-    const result = await searchPokemon(pokemon);
+  const onChangeHandler = (e) => {
+    setSearched(e.target.value);
 
-    setPokemons([result]);
+    if (e.target.value === "") onSearchHandler(null);
   };
 
   const onClickHandler = () => {
     onSearchHandler(searched);
   };
 
-  const handleKeyDown = (e) => { 
-    if(e.key === "Enter") onSearchHandler(searched);
-  }
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") onSearchHandler(searched);
+  };
 
   return (
     <Container>
@@ -28,7 +26,7 @@ const Searchbar = (props) => {
         type="text"
         placeholder="Buscar Pokemon"
         value={searched}
-        onChange={(e) => setSearched(e.target.value)}
+        onChange={onChangeHandler}
         onKeyDown={handleKeyDown}
       />
 

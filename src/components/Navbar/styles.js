@@ -40,10 +40,6 @@ export const Favorites = styled.button`
   p {
     color: white;
   }
-
-  p::before {
-    content: "|   ";
-  }
 `
 
 export const Heart = styled(BsFillHeartFill)`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsFillHeartFill } from "react-icons/bs";
 
 import {
   Button,
@@ -10,7 +11,6 @@ import {
   Title,
   Type,
   Types,
-  Heart,
 } from "./styles";
 
 import bgGrass from "../../assets/bgGrass.jpg";
@@ -30,16 +30,21 @@ import bgIce from "../../assets/bgIce.jpg";
 import bgDragon from "../../assets/bgDragon.jpg";
 import bgDark from "../../assets/bgDark.jpg";
 import bgSteel from "../../assets/bgSteel.jpg";
+import { useContext } from "react";
+import FavoritesContext from "../../contexts/favorites";
 
 const Pokemon = (props) => {
   const { pokemon } = props;
+  const { favoritesPokemons, updateFavoritesPokemons } =
+    useContext(FavoritesContext);
+
   const type = pokemon.types[0].type.name;
   const pokemonImage =
     pokemon.sprites.versions["generation-v"]["black-white"].animated
       .front_default;
 
   const onHeartClick = () => {
-    console.log("aqui");
+    updateFavoritesPokemons(pokemon.name);
   };
 
   const getBgCard = () => {
@@ -93,6 +98,10 @@ const Pokemon = (props) => {
     padding: 1rem;
   `;
 
+  const getHearthColor = favoritesPokemons.includes(pokemon.name)
+    ? "red"
+    : "black";
+
   return (
     <Card>
       <Image src={pokemonImage} alt={pokemon.name} />
@@ -109,7 +118,7 @@ const Pokemon = (props) => {
             ))}
           </Types>
           <Button onClick={onHeartClick}>
-            <Heart size={20} />
+            <BsFillHeartFill size={20} style={{ color: `${getHearthColor}` }} />
           </Button>
         </CardBodyBottom>
       </CardBody>
