@@ -6,7 +6,7 @@ import { Button, Container, Input } from "./styles";
 
 const Searchbar = (props) => {
   const { setPokemons } = props;
-  const [searched, setSearched] = useState("ditto");
+  const [searched, setSearched] = useState("");
 
   const onSearchHandler = async (pokemon) => {
     const result = await searchPokemon(pokemon);

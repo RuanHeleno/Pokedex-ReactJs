@@ -16,6 +16,9 @@ import {
 const Pokemon = (props) => {
   const { pokemon } = props;
   const type = pokemon.types[0].type.name;
+  const pokemonImage =
+    pokemon.sprites.versions["generation-v"]["black-white"].animated
+      .front_default;
 
   const onHeartClick = () => {
     console.log("aqui");
@@ -69,8 +72,6 @@ const Pokemon = (props) => {
     background-color: ${getBgCardColor};
     padding: 1rem;
   `;
-
-  const pokemonImage = pokemon.sprites.versions['generation-v']['black-white'].animated.front_default;
 
   return (
     <Card>
