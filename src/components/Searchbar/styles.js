@@ -20,6 +20,22 @@ export const Input = styled.input`
     border-color: lightgreen;
     width: 15%;
   }
+
+  @media (max-width: 1024px) {
+    width: 18%;
+
+    &:focus {
+      width: 28%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 28%;
+
+    &:focus {
+      width: 38%;
+    }
+  }
 `;
 
 export const Button = styled.button`

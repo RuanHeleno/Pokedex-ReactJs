@@ -9,11 +9,11 @@ export const searchPokemon = async (pokemon) => {
     .catch(function (err) {
       return {
         statusCode: 422,
-        body: `Error: ${err}`,
+        body: `${err}`,
       };
     });
 
-  return res;
+    if(res.statusCode !== 422) return res;
 };
 
 export const getPokemons = async (limit = 50, offset = 0) => {
@@ -21,20 +21,25 @@ export const getPokemons = async (limit = 50, offset = 0) => {
     .get(`${url}?limit=${limit}&offset=${offset}`)
     .then((res) => res.data)
     .catch(function (err) {
-        return {
-          statusCode: 422,
-          body: `Error: ${err}`,
-        };
-      });
+      return {
+        statusCode: 422,
+        body: `${err}`,
+      };
+    });
 
-  return res;
+  if(res.statusCode !== 422) return res;
 };
 
 export const getPokemonData = async (url) => {
   const res = await axios
     .get(url)
     .then((res) => res.data)
-    .catch((err) => console.error(err));
+    .catch(function (err) {
+      return {
+        statusCode: 422,
+        body: `${err}`,
+      };
+    });
 
-  return res;
+  if(res.statusCode !== 422) return res;
 };

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Navbar, Searchbar, Pokedex } from "./components";
 import { getPokemonData, getPokemons, searchPokemon } from "./api";
 
-import "./App.css";
 import { FavoriteProvider } from "./contexts/favorites";
+import GlobalStyle from "./theme/GlobalStyle";
 
 const favoritesKey = "favorites";
 
@@ -15,8 +15,7 @@ function App() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [favorites, setFavorites] = useState([]);
-
-  const itensPerPage = 30;
+  const [itensPerPage, setItensPerPage] = useState(30);
 
   const loadPokemons = async () => {
     try {
@@ -46,8 +45,8 @@ function App() {
         ? updatedFavorites.splice(favoriteIndex, 1)
         : updatedFavorites.push(name);
 
+      localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites));
       setFavorites(updatedFavorites);
-      localStorage.setItem(favoritesKey, JSON.stringify(favorites));
     } catch (error) {
       console.error(error);
     }
@@ -92,6 +91,14 @@ function App() {
     setLoading(false);
   };
 
+  const selectHandle = (e) => {
+    setItensPerPage(e.target.value);
+  };
+
+  useEffect(() => {
+    loadPokemons();
+  }, [itensPerPage]);
+
   return (
     <FavoriteProvider
       value={{
@@ -100,10 +107,11 @@ function App() {
       }}
     >
       <div className="App">
+        <GlobalStyle />
         <Navbar />
         <Searchbar onSearchHandler={onSearchHandler} />
         {notFound ? (
-          <div>Não achado...</div>
+          <div className="Not-Found">Pokemon não encontrado...</div>
         ) : (
           <Pokedex
             pokemons={pokemons}
@@ -111,6 +119,7 @@ function App() {
             page={page}
             setPage={setPage}
             totalPages={totalPages}
+            selectHandle={selectHandle}
           />
         )}
       </div>

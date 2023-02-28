@@ -1,12 +1,13 @@
 import SyncLoader from "react-spinners/SyncLoader";
 
+import Filter from "../Filter";
 import Pagination from "../Pagination";
 import Pokemon from "../Pokemon";
 
 import { Cards, Container, Load, Top } from "./styles";
 
 const Pokedex = (props) => {
-  const { pokemons, loading, page, setPage, totalPages } = props;
+  const { pokemons, loading, page, setPage, totalPages, selectHandle } = props;
 
   const onLeftClickHandler = () => {
     if (page > 0) setPage(page - 1);
@@ -19,6 +20,7 @@ const Pokedex = (props) => {
   return (
     <Container>
       <Top>
+        <Filter selectHandle={selectHandle} />
         <Pagination
           page={page + 1}
           totalPages={totalPages}
