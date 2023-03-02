@@ -122,6 +122,7 @@ function App() {
             selectHandle={selectHandle}
           />
         )}
+        <Outlet />
       </div>
     </FavoriteProvider>
   );
